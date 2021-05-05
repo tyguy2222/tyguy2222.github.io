@@ -3,28 +3,17 @@
 */
 
 
-var resourceFood = {name:'food', amount:50};
+var resourceFood = {name:'food', amount:0, growth:-0.1};
+var resourceStick;
 
 var resArray = [resourceFood];
 
-
-for(i=0;i<resArray.length;i++) {
-  var resource = document.createElement('div');
-  var resourceText = document.createTextNode(resArray[i].name +': ' + resArray[i].amount);
-  resource.setAttribute('id', resArray[i].name+"Counter");
-  resource.appendChild(resourceText);
-
-  document.getElementById('container').appendChild(resource);
+function harvestFood() {
+	resourceFood.amount++;
+	updateSimple();
 }
 
-resourceFood.amount--;
-resourceFood.amount--;
 
-function update() {
-  resourceFood.amount--;
-}
-
-setInterval(update, 1000);
 
 
 
