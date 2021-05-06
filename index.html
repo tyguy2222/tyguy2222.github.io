@@ -2,7 +2,7 @@
 	<link rel='stylesheet' href='styles.css'>
 
 	<body>
-		<div class='header'>header</div>
+		<div class='header'><h1>The Architect</h1></div>
 
 		<div class='tab'>
 			<button class='tablinks' onclick='openTab(event, "home")'>Home</button>
@@ -19,6 +19,7 @@
 			<div id='home' class='tabcontent'>
 				<h3>Home</h3>
 				<p><button id='foodGather' onclick='gather("food")'>Harvest Food</button></p>
+				<p><button id='stickGather' onclick='gather("stick")' style='display:none;'>Harvest Sticks</button></p>
 			</div>
 
 			<div id='inventory' class='tabcontent'>
@@ -47,5 +48,6 @@
 	<script src='.\javascript\resources.js'></script>
 	<script src='.\javascript\updates.js'></script>
 	<script src='.\javascript\shop.js'></script>
+	<script src='.\javascript\home.js'></script>
 
 </html>

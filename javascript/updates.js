@@ -5,7 +5,11 @@ function createResourcePanel() {
 	for(i=0;i<resArray.length;i++) {
 		if(document.getElementById(resArray[i].type+"Counter") == null) {
 			var resource = document.createElement('div');
-			var resourceText = document.createTextNode(resArray[i].name +': ' + resArray[i].amount.toFixed(1));
+			if(resArray[i].type == 'food') {
+				var resourceText = document.createTextNode(resArray[i].name +' (' + resArray[i].hunger + '): ' + resArray[i].amount.toFixed(1));
+			} else {
+				var resourceText = document.createTextNode(resArray[i].name +': ' + resArray[i].amount.toFixed(1));
+			}
 			resource.setAttribute('id', resArray[i].type+"Counter");
 			resource.appendChild(resourceText);
 
@@ -16,7 +20,20 @@ function createResourcePanel() {
 
 function updateSimple() {
 	for(i=0;i<resArray.length;i++) {
-		document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name + ': ' + resArray[i].amount.toFixed(1);
+		if(resArray[i].type == 'food') {
+			if(resArray[i].amount <= 10) {
+				resArray[i].hunger = 'starving'
+			} else if (resArray[i].amount <= 20) {
+				resArray[i].hunger = 'hungry'
+			} else if (resArray[i].amount <= 30) {
+				resArray[i].hunger = 'fed'
+			} else if (resArray[i].amount > 30) {
+				resArray[i].hunger = 'satisfied'
+			}
+			document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name +' (' + resArray[i].hunger + '): ' + resArray[i].amount.toFixed(1);
+		} else {
+			document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name + ': ' + resArray[i].amount.toFixed(1);
+		}
 	}
 }
 
@@ -26,7 +43,21 @@ function update() {
 		if(resArray[i].amount < 0) {
 			resArray[i].amount = 0;
 		}
-		document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name + ': ' + resArray[i].amount.toFixed(1);
+		if(resArray[i].type == 'food') {
+			if(resArray[i].amount <= 10) {
+				resArray[i].hunger = 'starving'
+			} else if (resArray[i].amount <= 20) {
+				resArray[i].hunger = 'hungry'
+			} else if (resArray[i].amount <= 30) {
+				resArray[i].hunger = 'fed'
+			} else if (resArray[i].amount > 30) {
+				resArray[i].hunger = 'satisfied'
+			}
+			document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name +' (' + resArray[i].hunger + '): ' + resArray[i].amount.toFixed(1);
+		} else {
+			document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name + ': ' + resArray[i].amount.toFixed(1);
+		}
+		
 	}
 }
 
