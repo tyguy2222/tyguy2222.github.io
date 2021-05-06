@@ -3,10 +3,10 @@
 */
 function createResourcePanel() {
 	for(i=0;i<resArray.length;i++) {
-		if(document.getElementById(resArray[i].name+"Counter") == null) {
+		if(document.getElementById(resArray[i].type+"Counter") == null) {
 			var resource = document.createElement('div');
 			var resourceText = document.createTextNode(resArray[i].name +': ' + resArray[i].amount.toFixed(1));
-			resource.setAttribute('id', resArray[i].name+"Counter");
+			resource.setAttribute('id', resArray[i].type+"Counter");
 			resource.appendChild(resourceText);
 
 			document.getElementById('resourcePanel').appendChild(resource);
@@ -16,7 +16,7 @@ function createResourcePanel() {
 
 function updateSimple() {
 	for(i=0;i<resArray.length;i++) {
-		document.getElementById(resArray[i].name+'Counter').innerHTML = resArray[i].name + ': ' + resArray[i].amount.toFixed(1);
+		document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name + ': ' + resArray[i].amount.toFixed(1);
 	}
 }
 
@@ -26,7 +26,7 @@ function update() {
 		if(resArray[i].amount < 0) {
 			resArray[i].amount = 0;
 		}
-		document.getElementById(resArray[i].name+'Counter').innerHTML = resArray[i].name + ': ' + resArray[i].amount.toFixed(1);
+		document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name + ': ' + resArray[i].amount.toFixed(1);
 	}
 }
 

@@ -3,14 +3,17 @@
 */
 
 
-var resourceFood = {name:'berries', amount:0, growth:-1};
-var resourceStick;
+var resource = {name:'berries', type:'food', amount:0, collectionRate:1, growth:-1};
 
-var resArray = [resourceFood];
+var resArray = [resource];
 
-function harvestFood() {
-	resourceFood.amount++;
-	updateSimple();
+function gather(resourceToGather) {
+	for(i=0;i<resArray.length;i++){
+		if(resArray[i].type == resourceToGather) {
+			resArray[i].amount += resArray[i].collectionRate;
+			updateSimple();
+		}
+	}
 }
 
 
