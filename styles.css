@@ -72,3 +72,19 @@ body {
 	width: 100%;
 	height: 100%;
 }
+
+.progressBorder {
+	width: 200px;
+	height: 40px;
+	border: 1px solid gray;
+}
+
+.progressFiller {
+	width: 50%;
+	height: 100%;
+	background-color: greenyellow;
+}
+
+.progressText {
+	text-align: center;
+}
