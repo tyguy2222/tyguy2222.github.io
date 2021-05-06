@@ -31,4 +31,4 @@ function update() {
 }
 
 createResourcePanel();
-setInterval(update, 100);
+setInterval(update, 1000);

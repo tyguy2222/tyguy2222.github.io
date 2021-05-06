@@ -3,7 +3,7 @@
 */
 
 
-var resourceFood = {name:'food', amount:0, growth:-0.1};
+var resourceFood = {name:'berries', amount:0, growth:-1};
 var resourceStick;
 
 var resArray = [resourceFood];

@@ -1,6 +1,31 @@
-/*
-* this is just thoughts for progress
-*/
+This is just thoughts for progress
+https://en.wikipedia.org/wiki/Outline_of_prehistoric_technology
+https://www.britannica.com/technology/hand-tool/Neolithic-tools
 
 **********STONE AGE**************
-food
+
+***STAGES***
+
+-Lower Paleolithic (2.5 million BP)
+    *Berry Gathering
+    *First tools (Oldowan)
+    *Upgrade (Acheulean)
+    *Fire control
+-Middle Paleolithic (300,000BP)
+    *Upgrade (Mousterian)
+    *Burial - Beginning of culture
+    *Art (Abstract)
+-Upper Paleolithic (60,000BP)
+    *Behavioural Modernity
+    *Upgrade (Aurignacian)
+    *Clothing (Reduce Hunger)
+    *Art (Non-Abstract)
+-Mesolithic (11,000BP)
+    *Tools (Microliths)
+    *Weaponry (Spears/Arrows)
+-Neolithic (10,000BP)
+    *Stone Farming Tools
+    *Upgrade (Polished Stone)
+    *Agriculture
+    *Domestication
+    *Architecture
