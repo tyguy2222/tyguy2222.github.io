@@ -18,9 +18,7 @@
 		
 			<div id='home' class='tabcontent'>
 				<h3>Home</h3>
-				<p><button id='foodGather' onclick='gather("food")'>Harvest Food</button></p>
-				<p><button id='stickGather' onclick='gather("wood")' style='display:none;'>Harvest Sticks</button></p>
-				<p><button id='stoneGather' onclick='gather("stone")' style='display:none;'>Harvest Stones</button></p>
+				<button id='foodGather' onclick='gather("food")'>Harvest Food</button>
 			</div>
 
 			<div id='inventory' class='tabcontent'>
@@ -31,11 +29,14 @@
 			<div id='research' class='tabcontent'>
 				<h3>Research</h3>
 				<p>This will be your research tab</p>
-				<div>
-					<div class='progressBorder'>
-						<div class='progressFiller' id='scienceProgress'><div class='progressText' id='scienceText'>hi</div></div>
-					</div>
+				<div class='progressBorder'>
+					<div class='progressFiller' id='scienceProgress'></div>
 				</div>
+
+				<div id='unlockedResearch'>
+					<button id='stickResearch' onclick='researchSticks(10, "food")'>Notice a stick - 10 berries</button>
+					<button id='stoneResearch' onclick='researchStones(10, "food")'>Notice a stone - 10 berries</button>
+				</div> 
 			</div>
 			
 			<div id='crafting' class='tabcontent'>
@@ -53,7 +54,7 @@
 	<script src='.\javascript\navigation.js'></script>
 	<script src='.\javascript\resources.js'></script>
 	<script src='.\javascript\updates.js'></script>
-	<script src='.\javascript\shop.js'></script>
+	<script src='.\javascript\research.js'></script>
 	<script src='.\javascript\home.js'></script>
 
 </html>

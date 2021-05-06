@@ -24,12 +24,20 @@ function updateSimple() {
 		if(resArray[i].type == 'food') {
 			if(resArray[i].amount <= 10) {
 				resArray[i].hunger = 'starving'
-				document.getElementById('stickGather').style.display = 'none';
-				document.getElementById('stoneGather').style.display = 'none';
+				if(document.getElementById('stickGather') != null){
+					document.getElementById('stickGather').style.display = 'none';
+				}
+				if (document.getElementById('stoneGather') != null){
+					document.getElementById('stoneGather').style.display = 'none';
+				}
 			} else if (resArray[i].amount <= 20) {
 				resArray[i].hunger = 'hungry'
-				document.getElementById('stickGather').style.display = 'block';
-				document.getElementById('stoneGather').style.display = 'block';
+				if(document.getElementById('stickGather') != null){
+					document.getElementById('stickGather').style.display = 'block';
+				}
+				if (document.getElementById('stoneGather') != null){
+					document.getElementById('stoneGather').style.display = 'block';
+				}
 			} else if (resArray[i].amount <= 30) {
 				resArray[i].hunger = 'fed'
 			} else if (resArray[i].amount > 30) {
