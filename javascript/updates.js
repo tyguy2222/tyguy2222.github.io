@@ -6,9 +6,9 @@ function createResourcePanel() {
 		if(document.getElementById(resArray[i].type+"Counter") == null) {
 			var resource = document.createElement('div');
 			if(resArray[i].type == 'food') {
-				var resourceText = document.createTextNode(resArray[i].name +' (' + resArray[i].hunger + '): ' + resArray[i].amount.toFixed(1));
+				var resourceText = document.createTextNode(resArray[i].name +' (' + resArray[i].hunger + '): ' + resArray[i].amount);
 			} else {
-				var resourceText = document.createTextNode(resArray[i].name +': ' + resArray[i].amount.toFixed(1));
+				var resourceText = document.createTextNode(resArray[i].name +': ' + resArray[i].amount);
 			}
 			resource.setAttribute('id', resArray[i].type+"Counter");
 			resource.appendChild(resourceText);
@@ -18,47 +18,39 @@ function createResourcePanel() {
 	}
 }
 
+//Update the screen WITHOUT modifying any numbers
 function updateSimple() {
 	for(i=0;i<resArray.length;i++) {
 		if(resArray[i].type == 'food') {
 			if(resArray[i].amount <= 10) {
 				resArray[i].hunger = 'starving'
+				document.getElementById('stickGather').style.display = 'none';
+				document.getElementById('stoneGather').style.display = 'none';
 			} else if (resArray[i].amount <= 20) {
 				resArray[i].hunger = 'hungry'
+				document.getElementById('stickGather').style.display = 'block';
+				document.getElementById('stoneGather').style.display = 'block';
 			} else if (resArray[i].amount <= 30) {
 				resArray[i].hunger = 'fed'
 			} else if (resArray[i].amount > 30) {
 				resArray[i].hunger = 'satisfied'
 			}
-			document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name +' (' + resArray[i].hunger + '): ' + resArray[i].amount.toFixed(1);
+			document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name +' (' + resArray[i].hunger + '): ' + resArray[i].amount;
 		} else {
-			document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name + ': ' + resArray[i].amount.toFixed(1);
+			document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name + ': ' + resArray[i].amount;
 		}
 	}
 }
 
+//Update that runs every second
 function update() {
 	for(i=0;i<resArray.length;i++) {
 		resArray[i].amount += resArray[i].growth;
 		if(resArray[i].amount < 0) {
 			resArray[i].amount = 0;
 		}
-		if(resArray[i].type == 'food') {
-			if(resArray[i].amount <= 10) {
-				resArray[i].hunger = 'starving'
-			} else if (resArray[i].amount <= 20) {
-				resArray[i].hunger = 'hungry'
-			} else if (resArray[i].amount <= 30) {
-				resArray[i].hunger = 'fed'
-			} else if (resArray[i].amount > 30) {
-				resArray[i].hunger = 'satisfied'
-			}
-			document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name +' (' + resArray[i].hunger + '): ' + resArray[i].amount.toFixed(1);
-		} else {
-			document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name + ': ' + resArray[i].amount.toFixed(1);
-		}
-		
 	}
+	updateSimple();
 }
 
 createResourcePanel();
