@@ -3,41 +3,26 @@
 */
 
 function researchSticks(cost, costType) {
-    for(i=0;i<resArray.length;i++) {
-        if(resArray[i].type == costType) {
-            if(resArray[i].amount >= cost) {
-                resArray[i].amount -= cost;
-                updateSimple();
-                var button = document.createElement('button');
-                var buttonText = document.createTextNode('Harvest Sticks');
-                button.appendChild(buttonText);
-                button.id = 'stickGather';
-                button.setAttribute('onclick','gather("wood")');
-                button.style = 'display:none';
-
-                document.getElementById('home').appendChild(button);
-                document.getElementById('stickResearch').remove();
-            }
-        }
+    var res = findResource(costType);
+    
+    if(res.amount >= cost) {
+        res.amount -= cost;
+        createResource('sticks', 'wood', 0, 1, 0);
+        updateSimple();
+        makeHarvestButton('sticks', 'wood');
+        document.getElementById('stickResearch').remove();
     }
 }
 
 function researchStones(cost, costType) {
-    for(i=0;i<resArray.length;i++) {
-        if(resArray[i].type == costType) {
-            if(resArray[i].amount >= cost) {
-                resArray[i].amount -= cost;
-                updateSimple();
-                var button = document.createElement('button');
-                var buttonText = document.createTextNode('Harvest Stones');
-                button.appendChild(buttonText);
-                button.id = 'stoneGather';
-                button.setAttribute('onclick','gather("stone")');
-                button.style = 'display:none';
+    var res = findResource(costType);
 
-                document.getElementById('home').appendChild(button);
-                document.getElementById('stoneResearch').remove();
-            }
-        }
+    if(res.amount >= cost) {
+        res.amount -= cost;
+        createResource('stone', 'stone', 0, 1, 0);
+        updateSimple();
+        makeHarvestButton('stone', 'stone');
+        document.getElementById('stoneResearch').remove();
     }
 }
+

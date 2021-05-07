@@ -4,7 +4,17 @@
 
 var resource = {name:'berries', type:'food', hunger:'starving', amount:0, collectionRate:1, growth:-1};
 var resArray = [resource];
-resource = {name:'sticks', type:'wood', amount:0, collectionRate:1, growth:0};
-resArray.push(resource);
-resource = {name:'stone', type:'stone', amount:0, collectionRate:1, growth:0};
-resArray.push(resource);
+
+function createResource(resName, resType, startingAmount, startingRate, startingGrowth) {
+    resource = {name:resName, type:resType, amount:startingAmount, collectionRate:startingRate, growth:startingGrowth};
+    resArray.push(resource);
+    createResourcePanel();
+}
+
+function findResource(resourceToSearch) {
+    for(i = 0; i < resArray.length; i++) {
+        if(resArray[i].type == resourceToSearch) {
+            return resArray[i];
+        }
+    }
+}

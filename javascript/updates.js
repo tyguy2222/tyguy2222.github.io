@@ -1,15 +1,13 @@
 /*
 * I want to put most code involving various updates in here I think
 */
+
+//creates (and updates) the resource panel
 function createResourcePanel() {
 	for(i=0;i<resArray.length;i++) {
 		if(document.getElementById(resArray[i].type+"Counter") == null) {
 			var resource = document.createElement('div');
-			if(resArray[i].type == 'food') {
-				var resourceText = document.createTextNode(resArray[i].name +' (' + resArray[i].hunger + '): ' + resArray[i].amount);
-			} else {
-				var resourceText = document.createTextNode(resArray[i].name +': ' + resArray[i].amount);
-			}
+			var resourceText = document.createTextNode(resArray[i].name +': ' + resArray[i].amount);
 			resource.setAttribute('id', resArray[i].type+"Counter");
 			resource.appendChild(resourceText);
 
@@ -21,36 +19,11 @@ function createResourcePanel() {
 //Update the screen WITHOUT modifying any numbers
 function updateSimple() {
 	for(i=0;i<resArray.length;i++) {
-		if(resArray[i].type == 'food') {
-			if(resArray[i].amount <= 10) {
-				resArray[i].hunger = 'starving'
-				if(document.getElementById('stickGather') != null){
-					document.getElementById('stickGather').style.display = 'none';
-				}
-				if (document.getElementById('stoneGather') != null){
-					document.getElementById('stoneGather').style.display = 'none';
-				}
-			} else if (resArray[i].amount <= 20) {
-				resArray[i].hunger = 'hungry'
-				if(document.getElementById('stickGather') != null){
-					document.getElementById('stickGather').style.display = 'block';
-				}
-				if (document.getElementById('stoneGather') != null){
-					document.getElementById('stoneGather').style.display = 'block';
-				}
-			} else if (resArray[i].amount <= 30) {
-				resArray[i].hunger = 'fed'
-			} else if (resArray[i].amount > 30) {
-				resArray[i].hunger = 'satisfied'
-			}
-			document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name +' (' + resArray[i].hunger + '): ' + resArray[i].amount;
-		} else {
 			document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name + ': ' + resArray[i].amount;
-		}
 	}
 }
 
-//Update that runs every second
+//Update that runs every second, makes any changes to resources (passive income) and runs updateSimple
 function update() {
 	for(i=0;i<resArray.length;i++) {
 		resArray[i].amount += resArray[i].growth;
@@ -59,6 +32,16 @@ function update() {
 		}
 	}
 	updateSimple();
+}
+
+//make a button that gets used for harvesting,
+function makeHarvestButton(name, type) {
+    var button = document.createElement('button');
+    var buttonText = document.createTextNode('harvest ' + name);
+    button.appendChild(buttonText);
+    button.id = type + 'Gather';
+    button.setAttribute('onClick','gather("'+type+'")');
+    document.getElementById('home').appendChild(button);
 }
 
 createResourcePanel();

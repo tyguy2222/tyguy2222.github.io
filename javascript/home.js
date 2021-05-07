@@ -7,3 +7,5 @@ function gather(resourceToGather) {
 		}
 	}
 }
+
+makeHarvestButton('berries', 'food');
