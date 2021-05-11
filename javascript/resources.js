@@ -18,3 +18,13 @@ function findResource(resourceToSearch) {
         }
     }
 }
+
+//make a button that gets used for harvesting,
+function makeHarvestButton(name, type) {
+    var button = document.createElement('button');
+    var buttonText = document.createTextNode('harvest ' + name);
+    button.appendChild(buttonText);
+    button.id = type + 'Gather';
+    button.setAttribute('onClick','gather("'+type+'")');
+    document.getElementById('home').appendChild(button);
+}
