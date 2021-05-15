@@ -5,10 +5,11 @@
 //creates (and updates) the resource panel
 function createResourcePanel() {
 	for(i=0;i<resArray.length;i++) {
-		if(document.getElementById(resArray[i].type+"Counter") == null) {
+		var res = resArray[i];
+		if(document.getElementById(res.type+"Counter") == null) {
 			var resource = document.createElement('div');
-			var resourceText = document.createTextNode(resArray[i].name +': ' + resArray[i].amount);
-			resource.setAttribute('id', resArray[i].type+"Counter");
+			var resourceText = document.createTextNode(res.name +': ' + res.amount + '/' + res.maxAmount);
+			resource.setAttribute('id', res.type+"Counter");
 			resource.appendChild(resourceText);
 
 			document.getElementById('resourcePanel').appendChild(resource);
@@ -19,17 +20,21 @@ function createResourcePanel() {
 //Update the screen WITHOUT modifying any numbers
 function updateSimple() {
 	for(i=0;i<resArray.length;i++) {
-			document.getElementById(resArray[i].type+'Counter').innerHTML = resArray[i].name + ': ' + resArray[i].amount;
+		var res = resArray[i]
+		if(res.amount < 0) {
+			res.amount = 0;
+		} if (res.amount > res.maxAmount) {
+			res.amount = res.maxAmount
+		}
+		document.getElementById(res.type+'Counter').innerHTML = res.name + ': ' + res.amount + '/' + res.maxAmount;
 	}
 }
 
 //Update that runs every second, makes any changes to resources (passive income) and runs updateSimple
 function update() {
 	for(i=0;i<resArray.length;i++) {
-		resArray[i].amount += resArray[i].growth;
-		if(resArray[i].amount < 0) {
-			resArray[i].amount = 0;
-		}
+		var res = resArray[i];
+		res.amount += res.growth;
 	}
 	updateSimple();
 }

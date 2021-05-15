@@ -2,11 +2,11 @@
 * I want to put most code involving various resources in here I think
 */
 
-var resource = {name:'berries', type:'food', hunger:'starving', amount:0, collectionRate:1, growth:-1};
+var resource = {name:'berries', type:'food', amount:0, maxAmount:25, collectionRate:1, growth:-1};
 var resArray = [resource];
 
-function createResource(resName, resType, startingAmount, startingRate, startingGrowth) {
-    resource = {name:resName, type:resType, amount:startingAmount, collectionRate:startingRate, growth:startingGrowth};
+function createResource(resName, resType, startingAmount, maximumAmount, startingRate, startingGrowth) {
+    resource = {name:resName, type:resType, amount:startingAmount, maxAmount:maximumAmount, collectionRate:startingRate, growth:startingGrowth};
     resArray.push(resource);
     createResourcePanel();
 }
