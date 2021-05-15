@@ -72,3 +72,5 @@ function makeResearchButton2(researchDescription, researchFunctionName, research
     button.setAttribute('onClick', researchFunctionName+'()');
     document.getElementById('unlockedResearch').appendChild(button);
 }
+
+hi
