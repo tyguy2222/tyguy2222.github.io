@@ -36,7 +36,16 @@ function researchStones() {
 }
 
 function researchOldowan() {
+    var res1 = findResource('wood');
+    var res2 = findResource('stone');
 
+    if(res1.amount >= 10 && res2.amount >= 10) {
+        res1.amount -= 10;
+        res2.amount -= 10;
+        makeCraftingButton2('Make an Oldowan chopper', 'oldowanChopper', 5, 'wood', 5, 'stone');
+        document.getElementById('researchOldowan').remove();
+        updateSimple();
+    }
 }
 
 function researchAcheulean () {

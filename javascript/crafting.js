@@ -8,7 +8,7 @@ function makeCraftingButton1(craftingDescription, craftingFunctionName, crafting
     button.appendChild(buttonText);
     button.id = craftingFunctionName;
     button.setAttribute('onClick', craftingFunctionName+'()');
-    document.getElementById('crafting').appendChild(button);
+    document.getElementById('craftableItems').appendChild(button);
 }
 
 function makeCraftingButton2(craftingDescription, craftingFunctionName, craftingCost1, craftingCostType1, craftingCost2, craftingCostType2) {
@@ -17,5 +17,38 @@ function makeCraftingButton2(craftingDescription, craftingFunctionName, crafting
     button.appendChild(buttonText);
     button.id = craftingFunctionName;
     button.setAttribute('onClick', craftingFunctionName+'()');
-    document.getElementById('crafting').appendChild(button);
+    document.getElementById('craftableItems').appendChild(button);
+}
+
+function craftItem(craftedItem) {
+    var item = document.createElement('div');
+    var itemText = document.createTextNode(craftedItem);
+    item.appendChild(itemText);
+    item.id = craftedItem;
+    document.getElementById('craftedItems').appendChild(item);
+}
+
+function berry1 () {
+    var res = findResource('wood');
+
+    if(res.amount >= 5) {
+        res.amount -= 5;
+        craftItem('Berry Stick')
+        findResource('food').collectionRate += 1
+        document.getElementById('berry1').remove();
+    }
+}
+
+function oldowanChopper () {
+    var res1 = findResource('wood');
+    var res2 = findResource('stone');
+
+    if (res1.amount >= 5 && res2.amount >= 5) {
+        res1.amount -= 5;
+        res2.amount -= 5;
+        craftItem('Oldowan Chopper');
+        document.getElementById('Berry Stick').remove();
+        document.getElementById('oldowanChopper').remove();
+        findResource('food').collectionRate += 1;
+    }
 }
